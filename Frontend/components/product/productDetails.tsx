@@ -19,7 +19,11 @@ interface TestProductProps {
 }
 
 const ProductDetailsPage: React.FC<TestProductProps> = ({TestProduct}) => {
-  const [mainImage, setMainImage] = useState("/Images/productG.jpeg");
+  const [mainImage, setMainImage] = useState(
+    TestProduct.thumbnails && TestProduct.thumbnails.length > 0
+      ? TestProduct.thumbnails[0]
+      : TestProduct.image
+  );
 
   return (
     <div className="p-4 md:p-8 w-full">
@@ -31,11 +35,15 @@ const ProductDetailsPage: React.FC<TestProductProps> = ({TestProduct}) => {
                     {TestProduct.thumbnails.map((src, index) => (
                     <Image
                         key={index}
-                        src={TestProduct.image}
+                        src={src}
                         alt={TestProduct.name}
                         width={100}
                         height={100}
-                        className="border border-gray-300 rounded cursor-pointer"
+                        className={`border border-gray-300 rounded cursor-pointer${
+                        mainImage === src
+                          ? "border-blue-500"
+                          : "border-gray-300"
+                      } `}
                         onClick={() => setMainImage(src)}
                     />
                     ))}
