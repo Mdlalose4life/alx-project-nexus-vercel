@@ -93,7 +93,7 @@ useEffect(() => {
                   onClick={closeBackdrop}
                   className="lg:hidden fixed left-0 right-0 bottom-0 bg-opacity-30 z-40"
                   style={{ 
-                    top: `${offsetTop - 160}px`,
+                    top: `${offsetTop - 180}px`,
                     backgroundColor: "rgba(255, 255, 255, 0.3)",
                     backdropFilter: "blur(2px)" 
                   }}
